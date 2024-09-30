@@ -61,8 +61,8 @@ num1=int(input("Enter first number"))
 num2=int(input("Enter second number"))
 ```
 Next, take num1, num2 in 2 separate lines in input file in1.txt 
-3
 8
+4
 ```
 f1=open("in1.txt","r")
 num1=f1.readline()# You may get error since num1, num2 are string
@@ -75,7 +75,7 @@ num1=int(f1.readline())
 num2=int(f1.readline())
 ```
 Next, take num1, num2 in a single line separated by a comma, in input file in2.txt
-3,8
+8.4
 ```
 f1=open("in2.txt","r")
 s1=f1.readline()
@@ -119,6 +119,90 @@ s2=str(out[0])+" "+str(out[1])+" "+str(out[2])+" "+str(out[3])+" "+str[4]+" "+st
 f2.write(s2)
 f2.close()
 ```
-2. 
+2. Mathematical tables - print tables from 3 to 20
+```
+print(3,1,3*1)
+print(3,2,3*2)
+print(3,3,3*3)
+```
+Here, we can see that there is a sequence in the 2nd and 3rd term. So, we can have a For Loop with iterator i   
+Start_value=1   
+Stop_value=4   
+Step_value=1   
+```
+for i in range(1,4,1):
+    print(3,i,3*i)
+```
+Now, we need table upto 3 times 10.  So
+```
+for i in range(1,11,1):
+    print(3,i,3*i)
+```
+Next, we need to repeat same block for table of 4
+```
+for i in range(1,11,1):
+    print(3,i,3*i)
+for i in range(1,11,1):
+    print(4,i,4*i)
+```
+It will be nice to have a blank line as a separator between the blocks 3 and 4
+```
+for i in range(1,11,1):
+    print(3,i,3*i)
+print()
+for i in range(1,11,1):
+    print(4,i,4*i)
+print()
+```
+The spacing and indentation determines whether the line of code is within the For Loop or outside the For Loop.  For example, what would be the output for this program ?
+```
+for i in range(1,11,1):
+    print(3,i,3*i)
+    print()
+for i in range(1,11,1):
+    print(4,i,4*i)
+print()
+```
+In the above program, the print() in line 3 is happening within the For Loop. If we need it outside the For Loop, we need to indent this line to the left. Let us add one more block for 5.
+```
+for i in range(1,11,1):
+    print(3,i,3*i)
+print()
+for i in range(1,11,1):
+    print(4,i,4*i)
+print()
+for i in range(1,11,1):
+    print(5,i,5*i)
+print()
+```
+In above code, observe lines 2,5,8. The parameter 3 is changing as per sequence 3,4,5. So, this is a candidate for an Outer For Loop with   
+Start_value=3   
+Stop_value=6   
+Step_value=1   
+Since the iterator i is busy, we need to use another iterator j. The existing block of code can be selected, click *tab* so that it gets indented to the right.
+```
+for j in range(3,6,1):
+    for i in range(1,11,1):
+        print(j,i,j*i)
+    print()
+```
+for j in range(3,21,1):
+    for i in range(1,11,1):
+        print(j,i,j*i)
+    print()
+```
+To enable printing of any mathematical tables, let us create 2 variables *start* and *stop*   
+```
+start=3
+stop=8
+for j in range(start,stop+1,1):
+    for i in range(1,11,1):
+        print(j,i,j*i)
+    print()
+```
+
+
+
+
 
 
