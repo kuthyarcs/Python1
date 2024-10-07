@@ -186,6 +186,7 @@ for j in range(3,6,1):
         print(j,i,j*i)
     print()
 ```
+```
 for j in range(3,21,1):
     for i in range(1,11,1):
         print(j,i,j*i)
@@ -200,6 +201,16 @@ for j in range(start,stop+1,1):
         print(j,i,j*i)
     print()
 ```
+Next, we can create a function *table1(start,stop)* to accept 2 parameters and print the mathematical table
+```
+def table1(start,stop):
+    for j in range(start,stop+1,1):
+        for i in range(1,11,1):
+            print(j,i,j*i)
+        print()
+table1(3,8)
+```
+Next, accept start and stop through keyboard
 
 
 
