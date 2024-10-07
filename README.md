@@ -1,4 +1,4 @@
-**Python Sample Assignments for Practice**   
+## Python Sample Assignments for Practice**   
 
 1. Calculator Program
 ```
@@ -210,7 +210,152 @@ def table1(start,stop):
         print()
 table1(3,8)
 ```
-Next, accept start and stop through keyboard
+Next, accept start and stop through keyboard   
+
+
+## Password Generator 21.py onwards
+```
+import random as rd
+s1="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+s2="abcdefghijklmnopqrstuvwxyz"
+s3="0123456789"
+pwd1=""
+
+r1=rd.randint(0,25)
+pwd1=pwd1+s1[r1]
+r1=rd.randint(0,25)
+pwd1=pwd1+s2[r1]
+r1=rd.randint(0,9)
+pwd1=pwd1+s3[r1]
+print(pwd1)
+```
+This produces a 3 character password. We need 5 more digits selected from a master string containing all 26+26+10 characters
+```
+s4=s1+s2+s3
+```
+After creating a master string s4, select at random 5 times and append to pwd
+```
+for i in range(0,5,1):
+    r1=rd.randint(0,61)
+    pwd1=pwd1+s4[r1]
+```
+Create a list from the string pwd using function list()
+Shuffle this list using function shuffle()
+```
+list1=list(pwd1)
+rd.shuffle(list1)
+```
+Convert list back into string using function join()
+Join using what delimiter ? We have chosen "" (empty) string
+```
+pwd2="".join(list1)
+```
+Create a user-defined Python function
+```
+def genPassword1():
+```
+At the end of the function, return the result to the calling main progra
+```
+return pwd2
+```
+In the main program, call the function, assign it to any variable say "result" and print this.
+```
+result=genPassword1()
+print(result)
+```
+The function genPassword1() can be modified to accept a parameter size
+```
+def genPassword1(size):
+```
+If we need a 8 digit password, first 3 can be upper, lower, digit. Next 5 can be anything. We can replace the hardcoded value '5' with 'size-3'
+```
+for i in range(0,size-3,1):
+```
+Some customers want to generate 20 such passwords and keep it as a store for use in different applications.  This can be done through a FOR loop
+```
+for i in range(0,20,1):
+    result=genPassword1(8)
+    print(result)
+```
+A new function genPassword2(size, qty) is created which accepts
+Size of password=8
+Quantity of passwords=20
+```
+def genPassword2(size,qty):
+    for i in range(0,qty,1):
+        result=genPassword1(size)
+        print(result)
+```
+Instead of printing the passwords inside the function, we can create a Master List (listm), push all the passwords to this list and return it to main function.
+```
+def genPassword2(size,qty):
+    listm=[]
+    for i in range(0,qty,1):
+        result=genPassword1(size)
+        listm.append(result)
+    return listm
+```
+The printing can be done in the main function as
+```
+result=genPassword2(8,20)
+print(result)
+```
+Instead of a Master List, we can create a Master string (listm), with each password separate by a ("\n") new line character.
+```
+def genPassword2(size,qty):
+    sm=""
+    for i in range(0,qty,1):
+        result=genPassword1(size)
+        sm=sm+result+"\n"
+    return sm
+```
+Now, there are 2 functions defined in the same file
+genPassword1(size) - generates a single password
+genPassword2(size,qty) - generates multiple passwords
+We can create a module called mod_genPassword.py
+
+```
+def genPassword1(size):
+    import random as rd
+    s1="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    s2="abcdefghijklmnopqrstuvwxyz"
+    s3="0123456789"
+    s4=s1+s2+s3
+    pwd1=""
+    r1=rd.randint(0,25)
+    pwd1=pwd1+s1[r1]
+    r1=rd.randint(0,25)
+    pwd1=pwd1+s2[r1]
+    r1=rd.randint(0,9)
+    pwd1=pwd1+s3[r1]
+    for i in range(0,size-3,1):
+        r1=rd.randint(0,61)
+        pwd1=pwd1+s4[r1]
+    list1=list(pwd1)
+    rd.shuffle(list1)
+    pwd2="".join(list1)
+    return pwd2
+
+def genPassword2(size,qty):
+    sm=""
+    for i in range(0,qty,1):
+        result=genPassword1(size)
+        sm=sm+result+"\n"
+    return sm
+```
+This module can be distributed to anybody else who wants to use this function without getting into the details.  This can be done by importing the module
+```
+import mod_genPassword as mg
+result=mg.genPassword2(8,20)
+print(result)
+```
+mg is an alias name. It is user-defined and can be changed to anything else
+
+              
+
+
+
+
 
 
 
